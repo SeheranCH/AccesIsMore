@@ -1,0 +1,2 @@
+rootProject.name='AccessIsMore'
+include ':app'
