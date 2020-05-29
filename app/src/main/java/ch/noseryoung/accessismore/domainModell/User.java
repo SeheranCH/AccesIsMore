@@ -34,6 +34,13 @@ public class User {
 
     public User () {}
 
+    public User(@NotNull String firstName, @NotNull String lastName, @NotNull String email, @NotNull String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }

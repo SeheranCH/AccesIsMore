@@ -9,7 +9,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ch.noseryoung.accessismore.domainModell.User;
+import ch.noseryoung.accessismore.persistence.AppDatabase;
+import ch.noseryoung.accessismore.persistence.UserDAO;
+
 public class CreateAccountActivity extends AppCompatActivity {
+
+    private UserDAO mUserDAO;
 
     private static final String TAG = "CreateAccountActivity";
 
@@ -35,10 +41,17 @@ public class CreateAccountActivity extends AppCompatActivity {
             String password1 = mEditTextPassword1.getText().toString();
             String password2 = mEditTextPassword2.getText().toString();
 
-            Log.d(TAG, firstName + "\n"  + lastName + "\n" + email + "\n" + password1  + "\n" + password2);
+            // Validation
 
-            Toast toast = Toast.makeText(getApplicationContext(), firstName + "\n"  + lastName + "\n" + email + "\n" + password1  + "\n" + password2, Toast.LENGTH_LONG);
-            toast.show();
+            Log.d(TAG, "\n" + firstName + "\n" + lastName + "\n" + email + "\n" + password1 + "\n" + password2);
+
+            /*Toast toast = Toast.makeText(getApplicationContext(), firstName + "\n"  + lastName + "\n" + email + "\n" + password1  + "\n" + password2, Toast.LENGTH_LONG);
+            toast.show();*/
+
+            // Save new account
+            User user = new User(firstName, lastName, email, password1);
+            mUserDAO.insertUser(user);
+
         }
     };
 
@@ -49,5 +62,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         Button saveNewAccount = findViewById(R.id.createNewAccountSecondButton);
         saveNewAccount.setOnClickListener(mSaveNewAccount);
+
+        mUserDAO = AppDatabase.getAppDb(getApplicationContext()).getUserDAO();
+
     }
 }
