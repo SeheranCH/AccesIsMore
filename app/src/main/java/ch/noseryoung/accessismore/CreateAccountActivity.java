@@ -1,5 +1,6 @@
 package ch.noseryoung.accessismore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 import ch.noseryoung.accessismore.domainModell.User;
 import ch.noseryoung.accessismore.persistence.AppDatabase;
@@ -45,15 +48,32 @@ public class CreateAccountActivity extends AppCompatActivity {
 
             Log.d(TAG, "\n" + firstName + "\n" + lastName + "\n" + email + "\n" + password1 + "\n" + password2);
 
-            /*Toast toast = Toast.makeText(getApplicationContext(), firstName + "\n"  + lastName + "\n" + email + "\n" + password1  + "\n" + password2, Toast.LENGTH_LONG);
-            toast.show();*/
+            //Delete all existing users
+            List<User> users = mUserDAO.getAllUsers();
+            mUserDAO.deleteUsers(users);
 
             // Save new account
             User user = new User(firstName, lastName, email, password1);
             mUserDAO.insertUser(user);
 
+            //Message for saving successfully
+            Toast toast = Toast.makeText(getApplicationContext(), "Sie haben erfolgreich Ihren Account erstellt", Toast.LENGTH_LONG);
+            toast.show();
         }
     };
+
+    private View.OnClickListener mGoToSignInActivity = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openMainActivity();
+        }
+    };
+
+    private void openMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        Log.d(TAG, "open new activity 'MainActivity'");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +82,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         Button saveNewAccount = findViewById(R.id.createNewAccountSecondButton);
         saveNewAccount.setOnClickListener(mSaveNewAccount);
+
+        Button goToSignIn = findViewById(R.id.signInButton2);
+        goToSignIn.setOnClickListener(mGoToSignInActivity);
 
         mUserDAO = AppDatabase.getAppDb(getApplicationContext()).getUserDAO();
 

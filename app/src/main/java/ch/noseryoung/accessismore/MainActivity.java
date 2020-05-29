@@ -21,13 +21,19 @@ public class MainActivity extends AppCompatActivity {
     private UserDAO mUserDAO;
 
     private EditText mEditTextEmail;
+    private EditText mEditTextPassword;
     private Button mButtonToGetSignedIn;
     private Button mButtonToCreateAccount;
 
-    private void showData(String email) {
-        User user = mUserDAO.getSingleUser(email);
-        String textToDisplay = "\n" + user.getEmail() + "\n" + user.getFirstName() + "\n" + user.getLastName() + "\n" + user.getPassword();
-        Toast.makeText(this, textToDisplay, Toast.LENGTH_LONG).show();
+    private void checkSignInData(String email, String password) {
+        User user = mUserDAO.checkSignInData(email, password);
+        if (user!=null) {
+            Log.d(TAG, "you have been signed in succesfully");
+            Toast.makeText(this, "Sie haben sich erfolgreich eingeloggt", Toast.LENGTH_LONG).show();
+        } else {
+            // throw new Exception
+        }
+        // TO DO: go to Welcome-Activity
     }
 
     private void openCreateAccountActivity() {
@@ -46,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mEditTextEmail = findViewById(R.id.emailFieldText);
+                mEditTextPassword = findViewById(R.id.passwordFieldText);
                 String email = mEditTextEmail.getText().toString();
-                showData(email);
+                String password = mEditTextPassword.getText().toString();
+                checkSignInData(email, password);
             }
         });
         mButtonToCreateAccount = findViewById(R.id.createNewAccountButton);
