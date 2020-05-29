@@ -28,11 +28,104 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="95dp"
         android:layout_marginRight="95dp"
-        android:text="@string/create_new_account"
+        android:text="@string/create_account"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/roundedButton"
+        android:layout_width="136dp"
+        android:layout_height="118dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/create_new_account"
+        app:layout_constraintEnd_toStartOf="@+id/editFirstnameFieldText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editFirstnameFieldText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/firstname"
+        app:layout_constraintBottom_toTopOf="@+id/editLastnameFieldText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/roundedButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editLastnameFieldText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="37dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/lastname"
+        app:layout_constraintBottom_toTopOf="@+id/editEmailFieldText"
+        app:layout_constraintEnd_toEndOf="@+id/editFirstnameFieldText"
+        app:layout_constraintStart_toStartOf="@+id/editFirstnameFieldText"
+        app:layout_constraintTop_toBottomOf="@+id/editFirstnameFieldText" />
+
+    <EditText
+        android:id="@+id/editEmailFieldText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/email"
+        app:layout_constraintBottom_toTopOf="@+id/editPasswordFieldText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editPasswordFieldText"
+        app:layout_constraintTop_toBottomOf="@+id/editLastnameFieldText" />
+
+    <EditText
+        android:id="@+id/editPasswordFieldText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/password"
+        app:layout_constraintBottom_toTopOf="@+id/editConfirmPasswordFieldText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editConfirmPasswordFieldText"
+        app:layout_constraintTop_toBottomOf="@+id/editEmailFieldText" />
+
+    <EditText
+        android:id="@+id/editConfirmPasswordFieldText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="336dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/confirm_password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPasswordFieldText" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

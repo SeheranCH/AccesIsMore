@@ -2,10 +2,14 @@
     <string name="app_name">Access is More</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
     <string name="confirm_password">Confirm password</string>
     <string name="create_new_account">Create a new account</string>
+    <string name="create_account">Create account</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_out">Sign out</string>
     <string name="or_you_can">or you can</string>
+
 
 </resources>
