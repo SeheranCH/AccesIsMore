@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import ch.noseryoung.accessismore.R;
 import ch.noseryoung.accessismore.domainModell.User;
+import ch.noseryoung.accessismore.exception.InvalidDataException;
 import ch.noseryoung.accessismore.persistence.AppDatabase;
 import ch.noseryoung.accessismore.persistence.UserDAO;
 import ch.noseryoung.accessismore.security.PasswordEncoder;
@@ -68,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "You have been signed in successfully");
             Toast.makeText(this, getString(R.string.toast_signed_in_success), Toast.LENGTH_LONG).show();
             openWelcomeScreenActivity();
-
         } else {
             Log.e(TAG, "Sign in data are false");
             Toast.makeText(this, getString(R.string.toast_signed_in_failure), Toast.LENGTH_LONG).show();
+            throw new InvalidDataException("Sign in data are false");
         }
     }
 
@@ -87,6 +88,4 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "Open new activity 'WelcomeScreen'");
         startActivity(intent);
     }
-
-
 }
