@@ -17,7 +17,7 @@ public interface UserDAO {
     public User getSingleUser(String emailAddress);
 
     @Query("SELECT * FROM users WHERE email = :emailAddress AND password = :password")
-    public User improveSignInData(String emailAddress, String password);
+    public User checkSignInData(String emailAddress, String password);
 
     @Query("SELECT * FROM users")
     List<User> getAllUsers();
@@ -30,5 +30,8 @@ public interface UserDAO {
 
     @Delete
     public void deleteUser (User user);
+
+    @Delete
+    public void deleteUsers (List<User> users);
 
 }

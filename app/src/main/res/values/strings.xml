@@ -1,5 +1,7 @@
 <resources>
+    <!-- XML -->
     <string name="app_name">Access is More</string>
+<<<<<<< HEAD
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="firstname">Firstname</string>
@@ -13,6 +15,54 @@
     <string name="an_account">Do you already have an account?</string>
     <string name="logo_description">Logo image</string>
     <string name="avatar_image">Avatar Image</string>
+=======
+    <string name="email">E-Mail</string>
+    <string name="password">Passwort</string>
+    <string name="firstname">Vorname</string>
+    <string name="lastname">Nachname</string>
+    <string name="confirm_password">Passwort bestätigen</string>
+    <string name="create_new_account">Neues Konto erstellen</string>
+    <string name="create_account">Konto erstellen</string>
+    <string name="sign_in">Anmelden</string>
+    <string name="sign_out">Abmelden</string>
+    <string name="no_account">Haben Sie noch kein Konto?</string>
+    <string name="an_account">Haben Sie schon ein Konto?</string>
+    <string name="logo_description">Logo-Bild</string>
+    <string name="take_a_picture">Ein Foto aufnehmen</string>
+>>>>>>> feature_ivo
 
+    <!-- MainActivity -->
 
+    <!-- CreateAccountActivity -->
+    <string-array name="all_types">
+        <item>first name</item>
+        <item>last name</item>
+        <item>email</item>
+        <item>password</item>
+    </string-array>
+    <string name="suffix_name">name</string>
+    <string name="emailType">email</string>
+    <string name="passwordType">password</string>
+    <string name="error_hasMaxLength50">hasMaxLength50</string>
+    <string name="error_hasMaxLength100">hasMaxLength100</string>
+    <string name="error_onlyLetters">onlyLetters</string>
+    <string name="error_email">email</string>
+    <string name="error_match_passwords">matchPasswords</string>
+    <string name="error_is_not_empty">isNotEmpty</string>
+
+    <!-- WelcomeScreenActivity -->
+
+    <!-- LOGER -->
+    <string name="message_signed_in_success">You have been signed in successfully</string>
+
+    <!-- Toasts -->
+    <string name="toast_signed_in_success">Sie haben sich erfolgreich eingeloggt</string>
+    <string name="toast_signed_up_success">Sie haben erfolgreich ein neues Konto erstellt</string>
+    <string name="toast_error_is_not_empty_1">Das Feld\u0020</string>
+    <string name="toast_error_is_not_empty_2"> ist leer</string>
+    <string name="toast_error_only_letters">Nur Buchstaben inkl. Umlaute und Leerzeichen für Feld\u0020</string>
+    <string name="toast_error_email">Falsches E-Mail-Format</string>
+    <string name="toast_error_has_max_length_50"> darf maximal 50 Zeichen haben</string>
+    <string name="toast_error_has_max_length_100"> darf maximal 100 Zeichen haben</string>
+    <string name="toast_error_match_passwords">Passwörter stimmen nicht überein</string>
 </resources>
