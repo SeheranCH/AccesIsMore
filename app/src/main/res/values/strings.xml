@@ -12,6 +12,7 @@
     <string name="no_account">Don \ t you have an account yet?</string>
     <string name="an_account">Do you already have an account?</string>
     <string name="logo_description">Logo image</string>
+    <string name="avatar_image">Avatar Image</string>
 
 
 </resources>

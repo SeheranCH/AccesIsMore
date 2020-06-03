@@ -91,6 +91,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ImageView
+        android:id="@+id/imgAvatarView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/avatar_image"
+        app:layout_constraintEnd_toStartOf="@+id/editFirstnameFieldText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
     <Button
         android:id="@+id/roundedButton"
         android:layout_width="136dp"
@@ -100,8 +112,7 @@
         android:layout_marginTop="72dp"
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
-        android:background="@drawable/roundedbutton"
-        android:text="@string/create_new_account"
+        android:background="@drawable/button_camera"
         app:layout_constraintEnd_toStartOf="@+id/editFirstnameFieldText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
