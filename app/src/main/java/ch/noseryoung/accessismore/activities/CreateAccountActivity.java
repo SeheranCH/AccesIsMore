@@ -139,7 +139,9 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
 
             Log.d(TAG, "\n" + firstName + "\n" + lastName + "\n" + email + "\n" + password1 + "\n" + password2);
+
             if (!maySubmitting.contains(false)) {
+
                 //Delete all existing users
                 List<User> users = mUserDAO.getAllUsers();
                 mUserDAO.deleteUsers(users);
