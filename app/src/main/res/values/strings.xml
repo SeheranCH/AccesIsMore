@@ -14,6 +14,7 @@
     <string name="an_account">Haben Sie schon ein Konto?</string>
     <string name="logo_description">Logo-Bild</string>
     <string name="take_a_picture">Ein Foto aufnehmen</string>
+    <string name="avatar_image">Avatar-Bild</string>
     <string name="welcome_slogan">Hey x, whats up?</string>
 
     <!-- MainActivity -->
