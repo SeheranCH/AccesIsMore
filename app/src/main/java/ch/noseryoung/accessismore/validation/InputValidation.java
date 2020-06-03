@@ -1,9 +1,5 @@
 package ch.noseryoung.accessismore.validation;
 
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

@@ -65,12 +65,14 @@ public class MainActivity extends AppCompatActivity {
         User user = mUserDAO.checkSignInData(email, password);
         Log.d(TAG, "\n" + email + "\n" + password);
         if (user!=null) {
-            Log.d(TAG, getString(R.string.message_signed_in_success));
+            Log.d(TAG, "You have been signed in successfully");
             Toast.makeText(this, getString(R.string.toast_signed_in_success), Toast.LENGTH_LONG).show();
+            openWelcomeScreenActivity();
+
         } else {
-            // throw new Exception
+            Log.e(TAG, "Sign in data are false");
+            Toast.makeText(this, getString(R.string.toast_signed_in_failure), Toast.LENGTH_LONG).show();
         }
-        // TO DO: go to Welcome-Activity
     }
 
     private void openCreateAccountActivity() {
@@ -78,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "Open new activity 'CreateAccount'");
         startActivity(intent);
     };
+
+    private void openWelcomeScreenActivity() {
+        // TO DO input user data
+        Intent intent = new Intent(this, WelcomeScreenActivity.class);
+        Log.d(TAG, "Open new activity 'WelcomeScreen'");
+        startActivity(intent);
+    }
 
 
 }

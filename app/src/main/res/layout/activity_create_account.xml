@@ -97,11 +97,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:contentDescription="@string/avatar_image"
+        android:contentDescription="@string/take_a_picture"
         app:layout_constraintEnd_toStartOf="@+id/editFirstnameFieldText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+        app:layout_constraintTop_toTopOf="parent">
+    </ImageView>
 
     <Button
         android:id="@+id/roundedButton"
@@ -112,16 +113,13 @@
         android:layout_marginTop="72dp"
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
-<<<<<<< HEAD
-        android:background="@drawable/button_camera"
-=======
         android:background="@drawable/roundedbutton"
         android:text="@string/take_a_picture"
->>>>>>> feature_ivo
         app:layout_constraintEnd_toStartOf="@+id/editFirstnameFieldText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+    />
 
     <EditText
         android:id="@+id/editFirstnameFieldText"

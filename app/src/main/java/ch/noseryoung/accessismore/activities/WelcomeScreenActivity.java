@@ -1,4 +1,13 @@
 package ch.noseryoung.accessismore.activities;
 
-public class WelcomeScreenActivity {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class WelcomeScreenActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }

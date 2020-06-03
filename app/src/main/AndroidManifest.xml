@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.CreateAccountActivity"></activity>
+        <activity android:name=".activities.WelcomeScreenActivity"></activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +20,8 @@
         </activity>
     </application>
 
-<<<<<<< HEAD
     <!--Kamera Berechtigung-->
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />
 
-=======
-    <!--Camera Authorization-->
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
-
-
->>>>>>> feature_ivo
 </manifest>

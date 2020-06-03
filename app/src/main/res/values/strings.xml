@@ -1,21 +1,6 @@
 <resources>
     <!-- XML -->
     <string name="app_name">Access is More</string>
-<<<<<<< HEAD
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="firstname">Firstname</string>
-    <string name="lastname">Lastname</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="create_new_account">Create a new account</string>
-    <string name="create_account">Create account</string>
-    <string name="sign_in">Sign in</string>
-    <string name="sign_out">Sign out</string>
-    <string name="no_account">Don \ t you have an account yet?</string>
-    <string name="an_account">Do you already have an account?</string>
-    <string name="logo_description">Logo image</string>
-    <string name="avatar_image">Avatar Image</string>
-=======
     <string name="email">E-Mail</string>
     <string name="password">Passwort</string>
     <string name="firstname">Vorname</string>
@@ -29,7 +14,6 @@
     <string name="an_account">Haben Sie schon ein Konto?</string>
     <string name="logo_description">Logo-Bild</string>
     <string name="take_a_picture">Ein Foto aufnehmen</string>
->>>>>>> feature_ivo
 
     <!-- MainActivity -->
 
@@ -53,16 +37,16 @@
     <!-- WelcomeScreenActivity -->
 
     <!-- LOGER -->
-    <string name="message_signed_in_success">You have been signed in successfully</string>
 
     <!-- Toasts -->
     <string name="toast_signed_in_success">Sie haben sich erfolgreich eingeloggt</string>
+    <string name="toast_signed_in_failure">Login-Daten sind falsch</string>
     <string name="toast_signed_up_success">Sie haben erfolgreich ein neues Konto erstellt</string>
     <string name="toast_error_is_not_empty_1">Das Feld\u0020</string>
-    <string name="toast_error_is_not_empty_2"> ist leer</string>
+    <string name="toast_error_is_not_empty_2">\u0020ist leer</string>
     <string name="toast_error_only_letters">Nur Buchstaben inkl. Umlaute und Leerzeichen für Feld\u0020</string>
     <string name="toast_error_email">Falsches E-Mail-Format</string>
-    <string name="toast_error_has_max_length_50"> darf maximal 50 Zeichen haben</string>
-    <string name="toast_error_has_max_length_100"> darf maximal 100 Zeichen haben</string>
+    <string name="toast_error_has_max_length_50">\u0020darf maximal 50 Zeichen haben</string>
+    <string name="toast_error_has_max_length_100">\u0020darf maximal 100 Zeichen haben</string>
     <string name="toast_error_match_passwords">Passwörter stimmen nicht überein</string>
 </resources>
