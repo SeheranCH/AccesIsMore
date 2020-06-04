@@ -180,10 +180,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     // Save new account
                     mUserDAO.insertUser(user);
 
-                    //Message for saving successfully
+                    // Message for saving successfully
                     Toast.makeText(getApplicationContext(), getString(R.string.toast_signed_up_success), Toast.LENGTH_LONG).show();
 
-                    //Go back to MainActivity
+                    // Go back to MainActivity
                     openMainActivity();
 
                 } else {

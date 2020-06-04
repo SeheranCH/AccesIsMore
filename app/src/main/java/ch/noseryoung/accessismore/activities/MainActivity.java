@@ -96,7 +96,9 @@ public class MainActivity extends AppCompatActivity {
         // Add user info for WelcomeScreenActivity
         intent.putExtra("firstName", firstName);
         intent.putExtra("lastName", lastName);
-        intent.putExtra("pathPicture", picturePath);
+        if (picturePath != null) {
+            intent.putExtra("pathPicture", picturePath);
+        }
         Log.d(TAG, "Open new activity 'WelcomeScreen'");
         startActivity(intent);
     }

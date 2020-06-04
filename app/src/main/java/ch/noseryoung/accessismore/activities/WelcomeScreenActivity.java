@@ -31,13 +31,16 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             sayHello.setText(getString(R.string.say_hello_1) + firstName + " " + lastName + getString(R.string.say_hello_2));
         }
 
+        avatar = findViewById(R.id.welcomeImageView);
         if (this.getIntent().hasExtra("pathPicture")) {
-            avatar = findViewById(R.id.imageView);
             String picturePath = this.getIntent().getStringExtra("pathPicture");
             Log.d(TAG, "Path of picture: " + picturePath);
             Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
             avatar.setImageBitmap(bitmap);
             Log.d(TAG, "Path of picture is available");
+        } else {
+            Log.d(TAG, "Set default avatar");
+            avatar.setImageResource(R.drawable.avatar_sample);
         }
     }
 }
