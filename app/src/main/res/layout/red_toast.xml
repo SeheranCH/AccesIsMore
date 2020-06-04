@@ -18,10 +18,9 @@
 
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/toastTextView"
             android:layout_width="373dp"
             android:layout_height="78dp"
-            android:background="#E3FF2C2C"
             android:textColor="#FFF" />
     </LinearLayout>
 
