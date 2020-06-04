@@ -29,6 +29,8 @@ public class User {
     @NotNull
     private String password;
 
+    private String pathPicture;
+
     @Ignore
     private Bitmap image;
 
@@ -83,6 +85,14 @@ public class User {
 
     public void setPassword(@NotNull String password) {
         this.password = password;
+    }
+
+    public String getPathPicture() {
+        return pathPicture;
+    }
+
+    public void setPathPicture(String pathPicture) {
+        this.pathPicture = pathPicture;
     }
 
     public Bitmap getImage() {

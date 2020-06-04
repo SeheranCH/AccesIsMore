@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 
 import ch.noseryoung.accessismore.domainModell.User;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String TAG = "AppDatabase";

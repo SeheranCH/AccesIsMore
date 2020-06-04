@@ -1,7 +1,7 @@
 package ch.noseryoung.accessismore.exception;
 
-public class InvalidDataException extends RuntimeException {
+public class InvalidDataException extends Exception {
     public InvalidDataException (String message) {
-        super(message);
+        System.err.println(message);
     }
 }

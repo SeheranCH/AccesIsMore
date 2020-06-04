@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mButtonToGetSignedIn = findViewById(R.id.signInButton);
+        // OnClickHandler for button 'Anmelden'
         mButtonToGetSignedIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                checkSignInData(email, password);
+                try {
+                    checkSignInData(email, password);
+                } catch (InvalidDataException e) {
+                    e.printStackTrace();
+                }
             }
         });
         mButtonToCreateAccount = findViewById(R.id.createNewAccountButton);
+        // OnClickHandler for button 'Neues Konto erstellen'
         mButtonToCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,19 +65,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // DB connection
         mUserDAO = AppDatabase.getAppDb(getApplicationContext()).getUserDAO();
     }
 
-    private void checkSignInData(String email, String password) {
-        User user = mUserDAO.checkSignInData(email, password);
-        Log.d(TAG, "\n" + email + "\n" + password);
-        if (user!=null) {
+    private void checkSignInData(String email, String password) throws InvalidDataException {
+        User user = mUserDAO.getSignInData(email, password);
+        if (user != null) {
             Log.d(TAG, "You have been signed in successfully");
             Toast.makeText(this, getString(R.string.toast_signed_in_success), Toast.LENGTH_LONG).show();
-            openWelcomeScreenActivity();
+            String firstName = user.getFirstName();
+            String lastName = user.getLastName();
+            String pathPicture = user.getPathPicture();
+            openWelcomeScreenActivity(firstName, lastName, pathPicture);
         } else {
-            Log.e(TAG, "Sign in data are false");
             Toast.makeText(this, getString(R.string.toast_signed_in_failure), Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Sign in data are false");
             throw new InvalidDataException("Sign in data are false");
         }
     }
@@ -80,11 +89,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CreateAccountActivity.class);
         Log.d(TAG, "Open new activity 'CreateAccount'");
         startActivity(intent);
-    };
+    }
 
-    private void openWelcomeScreenActivity() {
-        // TO DO input user data
+    private void openWelcomeScreenActivity(String firstName, String lastName, String picturePath) {
         Intent intent = new Intent(this, WelcomeScreenActivity.class);
+        // Add user info for WelcomeScreenActivity
+        intent.putExtra("firstName", firstName);
+        intent.putExtra("lastName", lastName);
+        intent.putExtra("pathPicture", picturePath);
         Log.d(TAG, "Open new activity 'WelcomeScreen'");
         startActivity(intent);
     }

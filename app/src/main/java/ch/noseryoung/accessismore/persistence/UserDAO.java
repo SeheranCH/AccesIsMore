@@ -17,7 +17,7 @@ public interface UserDAO {
     public User getSingleUser(String emailAddress);
 
     @Query("SELECT * FROM users WHERE email = :emailAddress AND password = :password")
-    public User checkSignInData(String emailAddress, String password);
+    public User getSignInData(String emailAddress, String password);
 
     @Query("SELECT * FROM users")
     List<User> getAllUsers();

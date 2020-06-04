@@ -21,14 +21,12 @@
 
     <!-- CreateAccountActivity -->
     <string-array name="all_types">
-        <item>first name</item>
-        <item>last name</item>
-        <item>email</item>
-        <item>password</item>
+        <item>Vorname</item>
+        <item>Nachname</item>
+        <item>E-Mail</item>
+        <item>Passwort</item>
     </string-array>
     <string name="suffix_name">name</string>
-    <string name="emailType">email</string>
-    <string name="passwordType">password</string>
     <string name="error_hasMaxLength50">hasMaxLength50</string>
     <string name="error_hasMaxLength100">hasMaxLength100</string>
     <string name="error_onlyLetters">onlyLetters</string>
@@ -37,6 +35,8 @@
     <string name="error_is_not_empty">isNotEmpty</string>
 
     <!-- WelcomeScreenActivity -->
+    <string name="say_hello_1">Hallo\u0020</string>
+    <string name="say_hello_2">,\u0020herzlich willkommen auf Access is more!</string>
 
     <!-- LOGER -->
 
@@ -51,4 +51,5 @@
     <string name="toast_error_has_max_length_50">\u0020darf maximal 50 Zeichen haben</string>
     <string name="toast_error_has_max_length_100">\u0020darf maximal 100 Zeichen haben</string>
     <string name="toast_error_match_passwords">Passwörter stimmen nicht überein</string>
+    <string name="toast_user_already_existing">Diese E-Mail existiert bereits</string>
 </resources>
