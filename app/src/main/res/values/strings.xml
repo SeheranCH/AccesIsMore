@@ -16,6 +16,7 @@
     <string name="take_a_picture">Ein Foto aufnehmen</string>
     <string name="avatar_image">Avatar-Bild</string>
     <string name="welcome_slogan">Hey x, whats up?</string>
+    <string name="logout">Ausloggen</string>
 
     <!-- MainActivity -->
 
