@@ -199,7 +199,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        Log.d(TAG, "open new activity 'MainActivity'");
     }
 
     private void dispatchTakePictureIntent() {
