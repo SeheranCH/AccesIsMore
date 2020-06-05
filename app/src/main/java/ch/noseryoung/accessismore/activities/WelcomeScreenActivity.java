@@ -32,39 +32,28 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             sayHello.setText(getString(R.string.say_hello_1) + firstName + " " + lastName + getString(R.string.say_hello_2));
         }
 
-        avatar = findViewById(R.id.welcomeImageView);
         if (this.getIntent().hasExtra("pathPicture")) {
-<<<<<<< HEAD
-=======
-            ImageView avatar = findViewById(R.id.imageView);
->>>>>>> dev
+            ImageView avatar = findViewById(R.id.welcomeImageView);
             String picturePath = this.getIntent().getStringExtra("pathPicture");
             Log.d(TAG, "Path of picture: " + picturePath);
             Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
             avatar.setImageBitmap(bitmap);
-<<<<<<< HEAD
-            Log.d(TAG, "Path of picture is available");
-        } else {
-            Log.d(TAG, "Set default avatar");
-            avatar.setImageResource(R.drawable.avatar_sample);
-=======
->>>>>>> dev
         }
     }
 
-        public boolean onCreateOptionsMenu (Menu menu){
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu_file, menu);
-            return true;
-        }
-
-        public boolean onOptionsItemSelected (MenuItem item){
-            logout();
-            return true;
-        }
-
-        public void logout () {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_file, menu);
+        return true;
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        logout();
+        return true;
+    }
+
+    public void logout() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+}
