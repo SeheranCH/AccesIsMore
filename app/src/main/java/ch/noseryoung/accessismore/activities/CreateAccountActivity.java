@@ -155,8 +155,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 }
             }
 
-            Log.d(TAG, "\n" + firstName + "\n" + lastName + "\n" + email + "\n" + password1 + "\n" + password2);
-
             // Check if validation is ok
             if (!maySubmitting.contains(false)) {
 
@@ -216,7 +214,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         } else if (errorType.equals(errorOnlyLetters)) {
             toastHandler.callToast(getString(R.string.toast_error_only_letters) + field, 0);
         } else if (errorType.equals(errorEmail)) {
-            toastHandler.callToast(getString(R.string.toast_error_email) + field, 0);
+            toastHandler.callToast(getString(R.string.toast_error_email), 0);
         } else if (errorType.equals(errorHasMaxLength50)) {
             toastHandler.callToast(field + getString(R.string.toast_error_has_max_length_50), 0);
         } else if (errorType.equals(errorHasMaxLength100)) {
@@ -228,7 +226,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
-        Log.d(TAG, "open new activity 'MainActivity'");
+        Log.d(TAG, "Open new activity 'MainActivity'");
         startActivity(intent);
     }
 
@@ -254,7 +252,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         String dateStamp = new SimpleDateFormat("dd.MM.yy_HH:mm").format(new Date());
         String imageFileName = "PersonalImage_" + dateStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        Log.d(TAG, "Directory of image: " + storageDir.toString());
         File image = File.createTempFile(imageFileName, ".jpg", storageDir);
         currentImagePath = image.getAbsolutePath();
         Log.d(TAG, "Show path of image: " + currentImagePath);
