@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
 
+    private PasswordEncoder passwordEncoder = new PasswordEncoder();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +40,10 @@ public class MainActivity extends AppCompatActivity {
                 mEditTextPassword = findViewById(R.id.passwordFieldText);
                 String email = mEditTextEmail.getText().toString();
                 String password = mEditTextPassword.getText().toString();
+                String hashedPassword = passwordEncoder.encryptPassword(password);
+                Log.d(TAG, "Encrypted password: " + hashedPassword);
                 try {
-                    password = PasswordEncoder.encrypt(password);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    checkSignInData(email, password);
+                    checkSignInData(email, hashedPassword);
                 } catch (InvalidDataException e) {
                     e.printStackTrace();
                 }

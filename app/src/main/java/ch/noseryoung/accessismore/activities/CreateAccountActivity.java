@@ -2,10 +2,8 @@ package ch.noseryoung.accessismore.activities;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -45,6 +43,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     private static final String TAG = "CreateAccountActivity";
 
     private InputValidation inputValidation = new InputValidation();
+
+    private PasswordEncoder passwordEncoder = new PasswordEncoder();
 
     private String currentImagePath;
 
@@ -167,17 +167,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                 //Check if user is already existing
                 User userToCheck = mUserDAO.getSingleUser(email);
                 if (userToCheck == null) {
-                    //Encrypt password and set picture if available
                     User user = new User(firstName, lastName, email, password1);
+                    // Set picture if available
                     if (currentImagePath != null) {
                         user.setPathPicture(currentImagePath);
                     }
-                    try {
-                        user.setPassword(PasswordEncoder.encrypt(user.getPassword()));
-                        Log.d(TAG, user.getPassword());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    // Encrypt password and set it
+                    user.setPassword(passwordEncoder.encryptPassword(user.getPassword()));
+                    Log.d(TAG, "Generated encrypted password: " + user.getPassword());
+
                     // Save new account
                     mUserDAO.insertUser(user);
 
