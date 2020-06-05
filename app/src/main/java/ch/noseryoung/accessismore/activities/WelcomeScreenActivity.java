@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ch.noseryoung.accessismore.R;
+import ch.noseryoung.accessismore.messages.ToastHandler;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
@@ -53,7 +54,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     }
 
     public void logout() {
+        ToastHandler toastHandler = new ToastHandler(getApplicationContext());
         Intent intent = new Intent(this, MainActivity.class);
+        toastHandler.callToast(getString(R.string.toast_user_signed_out_success),1);
+        Log.d(TAG, "Open new 'MainActivity'");
         startActivity(intent);
     }
 }

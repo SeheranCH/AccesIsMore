@@ -2,8 +2,10 @@ package ch.noseryoung.accessismore.activities;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,8 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -28,6 +30,7 @@ import java.util.List;
 import ch.noseryoung.accessismore.R;
 import ch.noseryoung.accessismore.domainModell.User;
 import ch.noseryoung.accessismore.exception.UserAlreadyExistingException;
+import ch.noseryoung.accessismore.messages.ToastHandler;
 import ch.noseryoung.accessismore.persistence.AppDatabase;
 import ch.noseryoung.accessismore.persistence.UserDAO;
 import ch.noseryoung.accessismore.security.PasswordEncoder;
@@ -67,8 +70,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         errorEmail = getString(R.string.error_email);
         errorMatchPasswords = getString(R.string.error_match_passwords);
 
-        ImageView picture = findViewById(R.id.imgAvatarView);
-
         Button saveNewAccount = findViewById(R.id.createNewAccountSecondButton);
         // OnClickHandler for button 'Neues Konto erstellen'
         saveNewAccount.setOnClickListener(mSaveNewAccount);
@@ -89,6 +90,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     private View.OnClickListener mSaveNewAccount = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            ToastHandler toastHandler = new ToastHandler(getApplicationContext());
+
             EditText mEditTextFirstName = findViewById(R.id.editFirstnameFieldText);
             EditText mEditTextLastName = findViewById(R.id.editLastnameFieldText);
             EditText mEditTextEmail = findViewById(R.id.editEmailFieldText);
@@ -179,14 +182,14 @@ public class CreateAccountActivity extends AppCompatActivity {
                     mUserDAO.insertUser(user);
 
                     // Message for saving successfully
-                    Toast.makeText(getApplicationContext(), getString(R.string.toast_signed_up_success), Toast.LENGTH_LONG).show();
+                    toastHandler.callToast(getString(R.string.toast_signed_up_success), 1);
 
                     // Go back to MainActivity
                     openMainActivity();
 
                 } else {
                     try {
-                        Toast.makeText(getApplicationContext(), getString(R.string.toast_user_already_existing), Toast.LENGTH_LONG).show();
+                        toastHandler.callToast(getString(R.string.toast_user_already_existing), 0);
                         Log.e(TAG, "User is already existing");
                         throw new UserAlreadyExistingException("User is already existing");
                     } catch (UserAlreadyExistingException e) {
@@ -212,18 +215,20 @@ public class CreateAccountActivity extends AppCompatActivity {
     };
 
     public void sendErrorMessage(String field, String errorType) {
+        ToastHandler toastHandler = new ToastHandler(getApplicationContext());
+
         if (errorType.equals(errorIsNotEmpty)) {
-            Toast.makeText(this, getString(R.string.toast_error_is_not_empty_1) + field + getString(R.string.toast_error_is_not_empty_2), Toast.LENGTH_LONG).show();
+            toastHandler.callToast(getString(R.string.toast_error_is_not_empty_1) + field + getString(R.string.toast_error_is_not_empty_2), 0);
         } else if (errorType.equals(errorOnlyLetters)) {
-            Toast.makeText(this, getString(R.string.toast_error_only_letters) + field, Toast.LENGTH_LONG).show();
+            toastHandler.callToast(getString(R.string.toast_error_only_letters) + field, 0);
         } else if (errorType.equals(errorEmail)) {
-            Toast.makeText(this, getString(R.string.toast_error_email), Toast.LENGTH_LONG).show();
+            toastHandler.callToast(getString(R.string.toast_error_email) + field, 0);
         } else if (errorType.equals(errorHasMaxLength50)) {
-            Toast.makeText(this, field + getString(R.string.toast_error_has_max_length_50), Toast.LENGTH_LONG).show();
+            toastHandler.callToast(field + getString(R.string.toast_error_has_max_length_50), 0);
         } else if (errorType.equals(errorHasMaxLength100)) {
-            Toast.makeText(this, field + getString(R.string.toast_error_has_max_length_100), Toast.LENGTH_LONG).show();
+            toastHandler.callToast(field + getString(R.string.toast_error_has_max_length_100), 0);
         } else if (errorType.equals(errorMatchPasswords)) {
-            Toast.makeText(this, getString(R.string.toast_error_match_passwords), Toast.LENGTH_LONG).show();
+            toastHandler.callToast(getString(R.string.toast_error_match_passwords), 0);
         }
     }
 
@@ -247,12 +252,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 Uri photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider", imageFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                // Set the picture into image view
-                Bitmap bitmap = BitmapFactory.decodeFile(currentImagePath);
-
-                // TO DO
-                ImageView profilePicture = findViewById(R.id.imgAvatarView);
-                profilePicture.setImageResource(R.drawable.avatar_sample);
             }
         }
     }
@@ -266,5 +265,17 @@ public class CreateAccountActivity extends AppCompatActivity {
         currentImagePath = image.getAbsolutePath();
         Log.d(TAG, "Show path of image: " + currentImagePath);
         return image;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            ImageView profilePicture = findViewById(R.id.imgAvatarView);
+            Bitmap bitmap = BitmapFactory.decodeFile(currentImagePath);
+            profilePicture.setImageBitmap(bitmap);
+            // Make button transparent
+            getAPicture.getBackground().setAlpha(0);
+        }
     }
 }
