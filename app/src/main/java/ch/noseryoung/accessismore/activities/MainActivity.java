@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             openWelcomeScreenActivity(firstName, lastName, pathPicture);
         } else {
             Log.e(TAG, "Sign in data are false");
-            toastHandler.callToast(getString(R.string.toast_signed_in_failure), 1);
+            toastHandler.callToast(getString(R.string.toast_signed_in_failure), 0);
             throw new InvalidDataException("Sign in data are false");
         }
     }

@@ -33,16 +33,16 @@ public class ToastHandler extends AppCompatActivity {
 
         switch (type){
             case 0:
-                //fail toast method
+                //red toast method
                 callFailToast(toastLayout,toastShowMessage,message);
                 break;
             case 1:
-                //success toast method
+                //green toast method
                 callSuccessToast(toastLayout,toastShowMessage,message);
                 break;
 
             case 2:
-                //warning toast method
+                //yellow toast method
                 callWarningToast( toastLayout, toastShowMessage, message);
                 break;
         }
