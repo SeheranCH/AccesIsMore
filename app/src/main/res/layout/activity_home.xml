@@ -15,28 +15,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logoaccessismore" />
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="105dp"
-        android:layout_height="1.21dp"
-        android:layout_marginBottom="249dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="105dp"
-        android:layout_height="1.21dp"
-        android:layout_marginBottom="249dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/welcomeTextView"
-        android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_width="339dp"
+        android:layout_height="283dp"
         android:layout_marginStart="107dp"
         android:layout_marginLeft="107dp"
         android:layout_marginTop="15dp"

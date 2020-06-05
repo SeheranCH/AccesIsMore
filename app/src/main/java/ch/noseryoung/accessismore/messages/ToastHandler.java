@@ -28,21 +28,21 @@ public class ToastHandler extends AppCompatActivity {
 
     public void callToast(String message,int type){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View toastLayout = (View) inflater.inflate(R.layout.red_toast,null);
+        View toastLayout = (View) inflater.inflate(R.layout.layout_toast,null);
         TextView toastShowMessage = (TextView) toastLayout.findViewById(R.id.toastTextView);
 
         switch (type){
             case 0:
-                //fail toast method
+                //red toast method
                 callFailToast(toastLayout,toastShowMessage,message);
                 break;
             case 1:
-                //success toast method
+                //green toast method
                 callSuccessToast(toastLayout,toastShowMessage,message);
                 break;
 
             case 2:
-                //warning toast method
+                //yellow toast method
                 callWarningToast( toastLayout, toastShowMessage, message);
                 break;
         }

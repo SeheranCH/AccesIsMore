@@ -99,12 +99,12 @@
         android:id="@+id/imgAvatarView"
         android:layout_width="198dp"
         android:layout_height="190dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/take_a_picture"
         app:layout_constraintEnd_toStartOf="@+id/editFirstnameFieldText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <Button
         android:id="@+id/roundedButton"

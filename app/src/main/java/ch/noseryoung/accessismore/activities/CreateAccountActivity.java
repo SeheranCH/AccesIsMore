@@ -160,10 +160,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             // Check if validation is ok
             if (!maySubmitting.contains(false)) {
 
-                //Delete all existing users
-                List<User> users = mUserDAO.getAllUsers();
-                mUserDAO.deleteUsers(users);
-
                 //Check if user is already existing
                 User userToCheck = mUserDAO.getSingleUser(email);
                 if (userToCheck == null) {
