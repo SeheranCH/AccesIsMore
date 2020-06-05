@@ -52,7 +52,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private String errorEmail;
     private String errorMatchPasswords;
 
-    private ImageView picture;
+    private Button getAPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         errorEmail = getString(R.string.error_email);
         errorMatchPasswords = getString(R.string.error_match_passwords);
 
-        picture = findViewById(R.id.imgAvatarView);
+        ImageView picture = findViewById(R.id.imgAvatarView);
 
         Button saveNewAccount = findViewById(R.id.createNewAccountSecondButton);
         // OnClickHandler for button 'Neues Konto erstellen'
@@ -77,7 +77,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         // OnClickHandler for button 'Anmelden'
         goToSignIn.setOnClickListener(mGoToSignInActivity);
 
-        Button getAPicture = findViewById(R.id.roundedButton);
+        getAPicture = findViewById(R.id.roundedButton);
         // OnClickHandler for button 'Ein Foto aufnehmen'
         getAPicture.setOnClickListener(mGetAPicture);
 
@@ -249,8 +249,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 // Set the picture into image view
                 Bitmap bitmap = BitmapFactory.decodeFile(currentImagePath);
-                //ImageView profilePicture = findViewById(R.id.imgAvatarView);
-                //profilePicture.setImageBitmap(bitmap);
+
+                // TO DO
+                ImageView profilePicture = findViewById(R.id.imgAvatarView);
+                profilePicture.setImageResource(R.drawable.avatar_sample);
             }
         }
     }
