@@ -52,25 +52,33 @@
         android:id="@+id/divider3"
         android:layout_width="105dp"
         android:layout_height="1.21dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="249dp"
+        android:layout_marginStart="306dp"
+        android:layout_marginLeft="306dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="33dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/createNewAccountButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signInButton"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintVertical_bias="0.418" />
 
     <View
         android:id="@+id/divider1"
         android:layout_width="105dp"
         android:layout_height="1.21dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="249dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="306dp"
+        android:layout_marginRight="306dp"
+        android:layout_marginBottom="33dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/createNewAccountButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signInButton"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.436" />
 
     <Button
         android:id="@+id/signInButton"
@@ -91,16 +99,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="209dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="201dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="33dp"
+        android:gravity="center"
         android:text="@string/no_account"
         app:layout_constraintBottom_toTopOf="@+id/createNewAccountButton"
         app:layout_constraintEnd_toStartOf="@+id/divider3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/divider1"
         app:layout_constraintTop_toBottomOf="@+id/signInButton"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <Button
         android:id="@+id/createNewAccountButton"
@@ -108,14 +118,15 @@
         android:layout_height="40dp"
         android:layout_marginStart="116dp"
         android:layout_marginLeft="116dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="116dp"
         android:layout_marginRight="116dp"
-        android:layout_marginBottom="120dp"
         android:background="@color/colorAccent"
         android:text="@string/create_new_account"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
