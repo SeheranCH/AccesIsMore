@@ -22,21 +22,15 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private UserDAO mUserDAO;
-
-    private PasswordEncoder passwordEncoder;
-
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
-    private Button mButtonToGetSignedIn;
-    private Button mButtonToCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mButtonToGetSignedIn = findViewById(R.id.signInButton);
-        // OnClickHandler for button 'Anmelden'
+        Button mButtonToGetSignedIn = findViewById(R.id.signInButton);
         mButtonToGetSignedIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 String email = mEditTextEmail.getText().toString();
                 String password = mEditTextPassword.getText().toString();
                 try {
-                    password = passwordEncoder.encrypt(password);
+                    password = PasswordEncoder.encrypt(password);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -56,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        mButtonToCreateAccount = findViewById(R.id.createNewAccountButton);
+        Button mButtonToCreateAccount = findViewById(R.id.createNewAccountButton);
         // OnClickHandler for button 'Neues Konto erstellen'
         mButtonToCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         // DB connection
         mUserDAO = AppDatabase.getAppDb(getApplicationContext()).getUserDAO();
+
+        // JUST AS A EXAMPLE
+        // ToastHandler toastHandler = new ToastHandler(getApplicationContext());
+        // toastHandler.callToast("hello", 1);
     }
 
     private void checkSignInData(String email, String password) throws InvalidDataException {

@@ -35,15 +35,13 @@ import ch.noseryoung.accessismore.validation.InputValidation;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-    private static final String TAG = "CreateAccountActivity";
-
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private UserDAO mUserDAO;
 
-    private InputValidation inputValidation = new InputValidation();
+    private static final String TAG = "CreateAccountActivity";
 
-    private PasswordEncoder passwordEncoder;
+    private InputValidation inputValidation = new InputValidation();
 
     private String currentImagePath;
 
@@ -54,7 +52,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private String errorEmail;
     private String errorMatchPasswords;
 
-    private ImageView picture;
+    private Button getAPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +67,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         errorEmail = getString(R.string.error_email);
         errorMatchPasswords = getString(R.string.error_match_passwords);
 
-        picture = findViewById(R.id.imgAvatarView);
+        ImageView picture = findViewById(R.id.imgAvatarView);
 
         Button saveNewAccount = findViewById(R.id.createNewAccountSecondButton);
         // OnClickHandler for button 'Neues Konto erstellen'
@@ -79,7 +77,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         // OnClickHandler for button 'Anmelden'
         goToSignIn.setOnClickListener(mGoToSignInActivity);
 
-        Button getAPicture = findViewById(R.id.roundedButton);
+        getAPicture = findViewById(R.id.roundedButton);
         // OnClickHandler for button 'Ein Foto aufnehmen'
         getAPicture.setOnClickListener(mGetAPicture);
 
@@ -172,7 +170,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         user.setPathPicture(currentImagePath);
                     }
                     try {
-                        user.setPassword(passwordEncoder.encrypt(user.getPassword()));
+                        user.setPassword(PasswordEncoder.encrypt(user.getPassword()));
                         Log.d(TAG, user.getPassword());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -245,13 +243,16 @@ public class CreateAccountActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (imageFile != null) {
-                // Set the picture into image view
-                Bitmap bitmap = BitmapFactory.decodeFile(currentImagePath);
-                picture.setImageBitmap(bitmap);
                 // Add picture into intent
                 Uri photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider", imageFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                // Set the picture into image view
+                Bitmap bitmap = BitmapFactory.decodeFile(currentImagePath);
+
+                // TO DO
+                ImageView profilePicture = findViewById(R.id.imgAvatarView);
+                profilePicture.setImageResource(R.drawable.avatar_sample);
             }
         }
     }
