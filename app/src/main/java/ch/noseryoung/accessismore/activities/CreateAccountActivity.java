@@ -35,15 +35,13 @@ import ch.noseryoung.accessismore.validation.InputValidation;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-    private static final String TAG = "CreateAccountActivity";
-
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private UserDAO mUserDAO;
 
-    private InputValidation inputValidation = new InputValidation();
+    private static final String TAG = "CreateAccountActivity";
 
-    private PasswordEncoder passwordEncoder;
+    private InputValidation inputValidation = new InputValidation();
 
     private String currentImagePath;
 
@@ -172,7 +170,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         user.setPathPicture(currentImagePath);
                     }
                     try {
-                        user.setPassword(passwordEncoder.encrypt(user.getPassword()));
+                        user.setPassword(PasswordEncoder.encrypt(user.getPassword()));
                         Log.d(TAG, user.getPassword());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -245,13 +243,14 @@ public class CreateAccountActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (imageFile != null) {
-                // Set the picture into image view
-                Bitmap bitmap = BitmapFactory.decodeFile(currentImagePath);
-                picture.setImageBitmap(bitmap);
                 // Add picture into intent
                 Uri photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider", imageFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                // Set the picture into image view
+                Bitmap bitmap = BitmapFactory.decodeFile(currentImagePath);
+                //ImageView profilePicture = findViewById(R.id.imgAvatarView);
+                //profilePicture.setImageBitmap(bitmap);
             }
         }
     }
