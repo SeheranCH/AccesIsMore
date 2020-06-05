@@ -28,7 +28,7 @@ public class ToastHandler extends AppCompatActivity {
 
     public void callToast(String message,int type){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View toastLayout = (View) inflater.inflate(R.layout.red_toast,null);
+        View toastLayout = (View) inflater.inflate(R.layout.layout_toast,null);
         TextView toastShowMessage = (TextView) toastLayout.findViewById(R.id.toastTextView);
 
         switch (type){
