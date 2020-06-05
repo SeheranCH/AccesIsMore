@@ -8,11 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import ch.noseryoung.accessismore.R;
 import ch.noseryoung.accessismore.domainModell.User;
 import ch.noseryoung.accessismore.exception.InvalidDataException;
+import ch.noseryoung.accessismore.messages.ToastHandler;
 import ch.noseryoung.accessismore.persistence.AppDatabase;
 import ch.noseryoung.accessismore.persistence.UserDAO;
 import ch.noseryoung.accessismore.security.PasswordEncoder;
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private UserDAO mUserDAO;
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
+
+    private PasswordEncoder passwordEncoder = new PasswordEncoder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +40,10 @@ public class MainActivity extends AppCompatActivity {
                 mEditTextPassword = findViewById(R.id.passwordFieldText);
                 String email = mEditTextEmail.getText().toString();
                 String password = mEditTextPassword.getText().toString();
+                String hashedPassword = passwordEncoder.encryptPassword(password);
+                Log.d(TAG, "Encrypted password: " + hashedPassword);
                 try {
-                    password = PasswordEncoder.encrypt(password);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    checkSignInData(email, password);
+                    checkSignInData(email, hashedPassword);
                 } catch (InvalidDataException e) {
                     e.printStackTrace();
                 }
@@ -61,24 +60,21 @@ public class MainActivity extends AppCompatActivity {
 
         // DB connection
         mUserDAO = AppDatabase.getAppDb(getApplicationContext()).getUserDAO();
-
-        // JUST AS A EXAMPLE
-        // ToastHandler toastHandler = new ToastHandler(getApplicationContext());
-        // toastHandler.callToast("hello", 1);
     }
 
     private void checkSignInData(String email, String password) throws InvalidDataException {
+        ToastHandler toastHandler = new ToastHandler(getApplicationContext());
         User user = mUserDAO.getSignInData(email, password);
         if (user != null) {
             Log.d(TAG, "You have been signed in successfully");
-            Toast.makeText(this, getString(R.string.toast_signed_in_success), Toast.LENGTH_LONG).show();
+            toastHandler.callToast(getString(R.string.toast_signed_in_success), 1);
             String firstName = user.getFirstName();
             String lastName = user.getLastName();
             String pathPicture = user.getPathPicture();
             openWelcomeScreenActivity(firstName, lastName, pathPicture);
         } else {
-            Toast.makeText(this, getString(R.string.toast_signed_in_failure), Toast.LENGTH_LONG).show();
             Log.e(TAG, "Sign in data are false");
+            toastHandler.callToast(getString(R.string.toast_signed_in_failure), 1);
             throw new InvalidDataException("Sign in data are false");
         }
     }

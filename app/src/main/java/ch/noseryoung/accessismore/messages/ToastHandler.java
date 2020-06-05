@@ -45,11 +45,7 @@ public class ToastHandler extends AppCompatActivity {
                 //warning toast method
                 callWarningToast( toastLayout, toastShowMessage, message);
                 break;
-            default:
-                callFailToast(toastLayout,toastShowMessage,message);
-
         }
-
     }
 
     //Failure toast message method

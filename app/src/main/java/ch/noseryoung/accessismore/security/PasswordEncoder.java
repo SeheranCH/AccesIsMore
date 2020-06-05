@@ -1,16 +1,21 @@
 package ch.noseryoung.accessismore.security;
 
-import android.util.Base64;
-import android.util.Log;
-
-import java.security.Key;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import java.util.Optional;
 
 public class PasswordEncoder {
 
-    private static final String TAG = "PasswordEncoder";
+    private static final String salt = "ABC";
+
+    public String encryptPassword (String password) {
+
+        Optional<String> hashOptional = HashGenerator.hashPassword(password, salt);
+
+        return hashOptional.toString();
+    }
+
+    // PREVIOUS VERSION PASSWORD ENCODER
+
+    /*private static final String TAG = "PasswordEncoder";
 
     private static final String ALGORITHM = "AES";
     private static final String KEY = "1Hbfh667adfDEJ78";
@@ -41,5 +46,5 @@ public class PasswordEncoder {
     private static Key generateKey() throws Exception {
         Key key = new SecretKeySpec(PasswordEncoder.KEY.getBytes(), PasswordEncoder.ALGORITHM);
         return key;
-    }
+    }*/
 }

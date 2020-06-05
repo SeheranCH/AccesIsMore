@@ -53,4 +53,5 @@
     <string name="toast_error_has_max_length_100">\u0020darf maximal 100 Zeichen haben</string>
     <string name="toast_error_match_passwords">Passwörter stimmen nicht überein</string>
     <string name="toast_user_already_existing">Diese E-Mail existiert bereits</string>
+    <string name="toast_user_signed_out_success">Sie haben sich erfolgreich ausgeloggt</string>
 </resources>

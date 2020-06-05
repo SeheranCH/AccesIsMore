@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ch.noseryoung.accessismore.R;
+import ch.noseryoung.accessismore.messages.ToastHandler;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         }
 
         if (this.getIntent().hasExtra("pathPicture")) {
-            ImageView avatar = findViewById(R.id.imageView);
+            ImageView avatar = findViewById(R.id.welcomeImageView);
             String picturePath = this.getIntent().getStringExtra("pathPicture");
             Log.d(TAG, "Path of picture: " + picturePath);
             Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
@@ -41,19 +42,22 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         }
     }
 
-        public boolean onCreateOptionsMenu (Menu menu){
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu_file, menu);
-            return true;
-        }
-
-        public boolean onOptionsItemSelected (MenuItem item){
-            logout();
-            return true;
-        }
-
-        public void logout () {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_file, menu);
+        return true;
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        logout();
+        return true;
+    }
+
+    public void logout() {
+        ToastHandler toastHandler = new ToastHandler(getApplicationContext());
+        Intent intent = new Intent(this, MainActivity.class);
+        toastHandler.callToast(getString(R.string.toast_user_signed_out_success),1);
+        Log.d(TAG, "Open new 'MainActivity'");
+        startActivity(intent);
+    }
+}
